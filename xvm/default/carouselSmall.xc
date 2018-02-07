@@ -87,7 +87,7 @@
       },
       // Vehicle name
       // Название танка
-      { 
+      {
         "enabled": true,
         "x": 159, "y": 14, "align": "right",
         "format": "<font face='$FieldFont' size='15' color='{{v.premium?#FFA759|#C8C8B5}}'>{{v.name}}</font>",
@@ -96,7 +96,7 @@
       // Winrate
       // Процент побед
       {
-        "enabled": true,
+        "enabled": false,
         "x": 24, "y": 16,
         "format": "<b><font face='$FieldFont' size='12' color='{{v.c_winrate|#C8C8B5}}'>{{v.winrate%2d~%}}</font></b>",
         "shadow": ${ "def.textFieldShadow" }
