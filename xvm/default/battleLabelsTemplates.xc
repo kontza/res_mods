@@ -9,7 +9,7 @@
     "hitlogHeader": {
       "enabled": false,
       "updateEvent": "ON_DAMAGE_CAUSED, ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:math.sum({{pp.widthLeft}},50)}}}}",
+      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},50)}}}}",
       "y": "{{pp.mode=0?65|40}}",
       "width": 500,
       "height": 1000,
@@ -23,7 +23,7 @@
       "enabled": false,
       "hotKeyCode": 56, "onHold": "true", "visibleOnHotKey": false,
       "updateEvent": "ON_DAMAGE_CAUSED, ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:math.sum({{pp.widthLeft}},50)}}}}",
+      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},50)}}}}",
       "y": "{{pp.mode=0?95|65}}",
       "width": 500,
       "height": 1000,
@@ -68,17 +68,6 @@
       "textFormat": { "size": 15, "align": "center" },
       "format": "{{py:xvm.total_hp.mainGun('{{l10n:mainGun}}: ',{{hitlog.dmg-total}})}}"
     },
-    // Chance of winning.
-    // Шанс на победу.
-    "winChance": {
-      "enabled": false,
-      "updateEvent": "ON_VEHICLE_DESTROYED",
-      "x": 230,
-      "y": 2,
-      "shadow": { "distance": 1, "angle": 90, "alpha": 80, "blur": 5, "strength": 1.5 },
-      "textFormat": { "size": 15 },
-      "format": "{{xvm-stat?{{l10n:Team strength}}: {{py:xvm.team_strength('{{allyStrengthStatic}}','{{enemyStrengthStatic}}')}} / {{py:xvm.team_strength('{{allyStrengthLive}}','{{enemyStrengthLive}}')}}}}"
-    },
     // Log of the received damage (see damageLog.xc).
     // Лог полученного урона (см. damageLog.xc).
     "damageLog": {
@@ -88,6 +77,7 @@
       "y": "{{py:xvm.damageLog.dLog_y}}",
       "width": 300,
       "height": 210,
+      "layer": "bottom",
       "screenVAlign": "bottom",
       "shadow": { 
         "distance": "{{py:xvm.damageLog.dLog_shadow('distance')}}",
@@ -125,6 +115,7 @@
       "y": "{{py:xvm.damageLog.lastHit_y}}",
       "width": 200,
       "height": 100,
+      "layer": "bottom",
       "screenHAlign": "center",
       "screenVAlign": "center",
       "shadow": { 
@@ -155,6 +146,7 @@
       "width": 200,
       "height": 100,
       "alpha": "{{py:xvm.damageLog.fire}}",
+      "layer": "bottom",
       "screenHAlign": "center",
       "screenVAlign": "center",
       "shadow": { "distance": 1, "angle": 90, "alpha": 80, "blur": 5, "strength": 3 },
@@ -164,12 +156,12 @@
     "totalEfficiency": {
       "enabled": false,
       "updateEvent": "PY(ON_TOTAL_EFFICIENCY), ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:math.sum({{pp.widthLeft}},50)}}}}",
+      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},50)}}}}",
       "y": "{{pp.mode=0?65|35}}",
-      "width": 300,
+      "width": "{{py:xvm.isStuns?350|260}}",
       "height": 22,
       "textFormat": { "size": 16 },
-      "format": "<textformat tabstops='[65,130,196]' leading='-2' ><img src='xvm://res/icons/Efficiency/damage.png' vspace='-2'> <font color='{{py:xvm.totalDamage>0?{{py:xvm.totalDamageColor}}}}'>{{py:xvm.totalDamage}}</font><tab><img src='xvm://res/icons/Efficiency/assist.png' vspace='-2'> {{py:xvm.totalAssist}}<tab><img src='xvm://res/icons/Efficiency/reflect.png' vspace='-2'> {{py:xvm.totalBlocked}}<tab><img src='xvm://res/icons/Efficiency/discover.png' vspace='-2'> {{py:xvm.detection}}</textformat>"
+      "format": "<textformat tabstops='[65,130,196,261]' leading='-2' ><img src='xvm://res/icons/Efficiency/damage.png' vspace='-2'> <font color='{{py:xvm.totalDamage>0?{{py:xvm.totalDamageColor}}}}'>{{py:xvm.totalDamage}}</font><tab><img src='xvm://res/icons/Efficiency/assist.png' vspace='-2'> {{py:xvm.totalAssist}}<tab><img src='xvm://res/icons/Efficiency/reflect.png' vspace='-2'> {{py:xvm.totalBlocked}}<tab><img src='xvm://res/icons/Efficiency/discover.png' vspace='-2'> {{py:xvm.detection}}<tab><img src='xvm://res/icons/Efficiency/stun.png' vspace='-2'> {{py:xvm.totalStun}}</textformat>"
     },
     // Rewritable timer format
     // Перезаписываемый формат таймера

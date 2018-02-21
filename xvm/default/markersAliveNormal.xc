@@ -18,6 +18,7 @@
       // Opacity (dynamic transparency allowed, see macros.txt).
       // Прозрачность (допускается использование динамической прозрачности, см. macros.txt)
       "alpha": 100,
+      "align": "center",
       // Font options.
       // Параметры шрифта.
       "textFormat": {
@@ -26,7 +27,6 @@
         // Color (dynamic colors allowed, see macros.txt).
         // Цвет (допускается использование динамического цвета, см. macros.txt)
         "color": null,
-        "align": "center",              // Text alignment (left, center, right) /   Выравнивание текста (left, center, right)
         "bold": false,                  // True - bold    / Жирный.
         "italic": false                 // True - italic  / Курсив.
       },
@@ -64,11 +64,11 @@
       "x": 0,
       "y": -36,
       "alpha": 100,
+      "align": "center",
       "textFormat": {
         "font": "$FieldFont",
         "size": 13,
         "color": null,
-        "align": "center",
         "bold": false,
         "italic": false
       },
@@ -91,13 +91,13 @@
       "x": 0,                         // положение по оси X
       "y": -51,                       // положение по оси Y
       "alpha": 100,                   // прозрачность (допускается использование динамической прозрачности, см. macros.txt)
+      "align": "center",              // выравнивание текста (left, center, right)
       // Font options.
       // Параметры шрифта.
       "textFormat": {
         "font": "$FieldFont",         //   название
         "size": 13,                   //   размер
         "color": null,                //   цвет (допускается использование динамического цвета, см. macros.txt)
-        "align": "center",            //   выравнивание текста (left, center, right)
         "bold": false,                //   обычный (false) или жирный (true)
         "italic": false               //   обычный (false) или курсив (true)
       },
@@ -124,11 +124,11 @@
       "x": 0,
       "y": -20,
       "alpha": 100,
+      "align": "center",
       "textFormat": {
         "font": "$FieldFont",
         "size": 11,
         "color": "0xD9D9D9",
-        "align": "center",
         "bold": true,
         "italic": false
       },
@@ -148,14 +148,14 @@
     "rating": {
       "name": "Rating",
       "enabled": true,
-      "x": -35,
-      "y": -20,
+      "x": -32,
+      "y": -21,
       "alpha": "{{xvm-stat?100|0}}",
+      "align": "right",
       "textFormat": {
         "font": "xvm",
-        "size": 16,
-        "color": "{{c:r|#999999}}",
-        "align": "right",
+        "size": 17,
+        "color": "{{c:xr|#999999}}",
         "bold": false,
         "italic": false
       },
@@ -165,7 +165,7 @@
         "angle": 45,
         "color": "0x000000",
         "alpha": 100,
-        "blur": 1,
+        "blur": 2,
         "strength": 1
       },
       "format": "&#x115;"
@@ -176,15 +176,15 @@
       "name": "xmqp event",           //  название текстового поля, ни на что не влияет
       "enabled": true,                //  false - не отображать
       "x": 0,                         //  положение по оси X
-      "y": "{{battletype?-71|{{squad?-71|-56}}}}",  //  положение по оси Y
+      "y": "{{battletype?-73|{{squad?-73|-58}}}}",  //  положение по оси Y
       "alpha": 100,                   //  прозрачность (допускается использование динамической прозрачности, см. macros.txt)
+      "align": "center",              //  выравнивание текста (left, center, right)
       // Font options.
       // Параметры шрифта.
       "textFormat": {
         "font": "xvm",                //  название
-        "size": 23,                   //  размер
+        "size": 24,                   //  размер
         "color": "0xFFBB00",          //  цвет (допускается использование динамического цвета, см. macros.txt)
-        "align": "center",            //  выравнивание текста (left, center, right)
         "bold": false,                //  обычный (false) или жирный (true)
         "italic": false               //  обычный (false) или курсив (true)
       },
@@ -193,6 +193,7 @@
       "shadow": {
         // false - no shadow
         // false - без тени
+        "enabled": true,
         "distance": 0,                //  дистанция смещения
         "angle": 45,                  //  угол смещения
         "color": "0x000000",          //  цвет
@@ -201,6 +202,35 @@
         "strength": 1                 //  интенсивность
       },
       "format": "<font color='{{x-spotted?#FFBB00|#FFFFFF}}' alpha='{{x-spotted?#FF|#80}}'>{{x-spotted?&#x70;|{{x-sense-on?&#x70;}}}}</font> {{x-overturned?&#x112;}}"  //  формат текста. См. описание макросов в macros.txt
+    },
+    // Position of the player
+    // Порядковый номер игрока
+    "position": {
+      "name": "position",             //  название текстового поля, ни на что не влияет
+      "enabled": false,                //  false - не отображать
+      "x": 0,                         //  положение по оси X
+      "y": -51,                       //  положение по оси Y
+      "alpha": 100,                   //  прозрачность (допускается использование динамической прозрачности, см. macros.txt)
+      "align": "center",              //  выравнивание текста (left, center, right)
+      "textFormat": {                 //  параметры шрифта
+        "font": "$FieldFont",         //  название
+        "size": 13,                   //  размер
+        "color": "0xEDEDED",          //  цвет (допускается использование динамического цвета, см. macros.txt)
+        "bold": false,                //  обычный (false) или жирный (true)
+        "italic": false               //  обычный (false) или курсив (true)
+      },
+      "shadow": {                     //  параметры тени
+        // false - no shadow
+        // false - без тени
+        "enabled": false,
+        "distance": 0,                //   дистанция смещения
+        "angle": 45,                  //   угол смещения
+        "color": "{{c:system}}",      //   цвет
+        "alpha": 100,                 //   прозрачность
+        "blur": 6,                    //   размытие
+        "strength": 2                 //   интенсивность
+      },
+      "format": "<font size='{{battletype?13|0}}'>{{position}}</font>"  //  формат текста. См. описание макросов в macros.txt
     }
   },
   // Настройки для союзников.
@@ -248,7 +278,7 @@
       },
       // Параметры оставшегося здоровья.
       "fill": {
-        "alpha": 45                     //     прозрачность
+        "alpha": 50                     //     прозрачность
       },
       // Параметры анимации отнимаемого здоровья.
       "damage": {
@@ -303,8 +333,16 @@
       "y": -67,          // Position on the Y axis / Положение по оси Y.
       "alpha": 100       // Opacity                / Прозрачность.
     },
-    // Block of text fields.
-    // Блок текстовых полей.
+    // Stun marker
+    // Маркер оглушения
+    "stunMarker": {
+      "enabled": true,   // false - disable        / не отображать.
+      "x": 0,            // Position on the X axis / Положение по оси X.
+      "y": -67,          // Position on the Y axis / Положение по оси Y.
+      "alpha": 100       // Opacity                / Прозрачность.
+    },
+    // Block of text fields (extended format supported, see extra-field.txt).
+    // Блок текстовых полей (поддерживается расширенный формат, см. extra-field.txt).
     "textFields": [
       ${ "def.tankName" },
       ${ "def.playerName" },
@@ -388,12 +426,21 @@
       "y": -67,
       "alpha": 100
     },
-    // Block of text fields.
-    // Блок текстовых полей.
+    // Stun marker
+    // Маркер оглушения
+    "stunMarker": {
+      "enabled": true,
+      "x": 0,
+      "y": -67,
+      "alpha": 100
+    },
+    // Block of text fields (extended format supported, see extra-field.txt).
+    // Блок текстовых полей (поддерживается расширенный формат, см. extra-field.txt).
     "textFields": [
       ${ "def.tankName" },
       ${ "def.tankHp" },
-      ${ "def.rating" }
+      ${ "def.rating" },
+      ${ "def.position" }
     ]
   }
 }
