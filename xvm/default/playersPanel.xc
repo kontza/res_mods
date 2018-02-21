@@ -169,7 +169,7 @@
       // Available names: "frags", "badge", "nick", "vehicle".
       // Отображаемые стандартные поля в данном режиме, и их порядок.
       // Допустимые названия: "frags", "badge", "nick", "vehicle".
-      "standardFields": [ "vehicle" ],
+      "standardFields": [ "frags" ],
       // Width of area for switching to "large" mode on mouse over
       // Ширина области переключения в режим "large" при наведении мыши
       "expandAreaWidth": 230,
@@ -282,7 +282,7 @@
       // Available names: "frags", "badge", "nick", "vehicle".
       // Отображаемые стандартные поля в данном режиме, и их порядок.
       // Допустимые названия: "frags", "badge", "nick", "vehicle".
-      "standardFields": [ "vehicle", "badge", "nick" ],
+      "standardFields": [ "frags", "nick" ],
       // Width of area for switching to "large" mode on mouse over
       // Ширина области переключения в режим "large" при наведении мыши
       "expandAreaWidth": 230,
@@ -393,7 +393,7 @@
       // Available names: "frags", "badge", "nick", "vehicle".
       // Отображаемые стандартные поля в данном режиме, и их порядок.
       // Допустимые названия: "frags", "badge", "nick", "vehicle".
-      "standardFields": [ "nick", "vehicle" ],
+      "standardFields": [ "frags", "vehicle" ],
       // Width of area for switching to "large" mode on mouse over
       // Ширина области переключения в режим "large" при наведении мыши
       "expandAreaWidth": 230,
@@ -504,7 +504,7 @@
       // Available names: "frags", "badge", "nick", "vehicle".
       // Отображаемые стандартные поля в данном режиме, и их порядок.
       // Допустимые названия: "frags", "badge", "nick", "vehicle".
-      "standardFields": [ "badge", "nick", "vehicle" ],
+      "standardFields": [ "frags", "nick", "vehicle" ],
       // true - disable platoon icons
       // true - убрать отображение иконок взвода
       "removeSquadIcon": false,
