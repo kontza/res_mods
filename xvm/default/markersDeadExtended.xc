@@ -18,6 +18,7 @@
       // Opacity (dynamic transparency allowed, see macros.txt).
       // Прозрачность (допускается использование динамической прозрачности, см. macros.txt)
       "alpha": 100,
+      "align": "center",
       // Font options.
       // Параметры шрифта.
       "textFormat": {
@@ -26,7 +27,6 @@
         // Color (dynamic colors allowed, see macros.txt).
         // Цвет (допускается использование динамического цвета, см. macros.txt)
         "color": null,
-        "align": "center",              // Text alignment (left, center, right) /   Выравнивание текста (left, center, right)
         "bold": false,                  // True - bold    / Жирный.
         "italic": false                 // True - italic  / Курсив.
       },
@@ -62,13 +62,13 @@
       "x": 0,                         // положение по оси X
       "y": -34,                       // положение по оси Y
       "alpha": 80,                    // прозрачность (допускается использование динамической прозрачности, см. macros.txt)
+      "align": "center",              // выравнивание текста (left, center, right)
       // Font options.
       // Параметры шрифта.
       "textFormat": {
         "font": "$FieldFont",         //   название
         "size": 13,                   //   размер
         "color": null,                //   цвет (допускается использование динамического цвета, см. macros.txt)
-        "align": "center",            //   выравнивание текста (left, center, right)
         "bold": false,                //   обычный (false) или жирный (true)
         "italic": false               //   обычный (false) или курсив (true)
       },
@@ -95,11 +95,11 @@
       "x": 0,                         // положение по оси X
       "y": -20,                       // положение по оси Y
       "alpha": 80,                    // прозрачность (допускается использование динамической прозрачности, см. macros.txt)
+      "align": "center",              // выравнивание текста (left, center, right)
       "textFormat": {                 // параметры шрифта
         "font": "$FieldFont",         //   название
         "size": 13,                   //   размер
         "color": null,                //   цвет (допускается использование динамического цвета, см. macros.txt)
-        "align": "center",            //   выравнивание текста (left, center, right)
         "bold": false,                //   обычный (false) или жирный (true)
         "italic": false               //   обычный (false) или курсив (true)
       },
@@ -215,8 +215,16 @@
       "y": -67,          // Position on the Y axis / Положение по оси Y.
       "alpha": 100       // Opacity                / Прозрачность.
     },
-    // Block of text fields.
-    // Блок текстовых полей.
+    // Stun marker
+    // Маркер оглушения
+    "stunMarker": {
+      "enabled": true,   // false - disable        / не отображать.
+      "x": 0,            // Position on the X axis / Положение по оси X.
+      "y": -67,          // Position on the Y axis / Положение по оси Y.
+      "alpha": 100       // Opacity                / Прозрачность.
+    },
+    // Block of text fields (extended format supported, see extra-field.txt).
+    // Блок текстовых полей (поддерживается расширенный формат, см. extra-field.txt).
     "textFields": [
       ${ "def.tankName" },
       ${ "def.playerName" }
@@ -297,8 +305,16 @@
       "y": -67,
       "alpha": 100
     },
-    // Block of text fields.
-    // Блок текстовых полей.
+    // Stun marker
+    // Маркер оглушения
+    "stunMarker": {
+      "enabled": true,
+      "x": 0,
+      "y": -67,
+      "alpha": 100
+    },
+    // Block of text fields (extended format supported, see extra-field.txt).
+    // Блок текстовых полей (поддерживается расширенный формат, см. extra-field.txt).
     "textFields": [
       ${ "def.tankName" },
       ${ "def.playerName" }
