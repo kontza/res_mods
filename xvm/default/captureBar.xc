@@ -98,7 +98,7 @@
     // Allies capturing enemy base
     // Союзники захватывают базу противника
     "ally": {
-      "сolor": null,
+      "color": null,
       "title": {
         "$ref": { "path":"captureBar.enemy.title" },
         "format": "<font size='15' color='#FFFFFF'>{{l10n:enemyBaseCapture}}</font> <font size='14' color='#F0F0F0'>({{cap.points}})</font>",
