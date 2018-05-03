@@ -19,9 +19,9 @@
     // Enemies capturing ally base
     // Противник захватывает базу союзников
     "enemy": {
-      // Сapture bar color (default: use system color)
+      // Capture bar color (default: use system color)
       // Цвет полосы захвата (по умолчанию используется системный цвет)
-      "сolor": null,
+      "color": null,
       // Title textfield (center)
       // Текстовое поле с заголовком (среднее)
       "title": {
