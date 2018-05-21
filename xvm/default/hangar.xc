@@ -43,7 +43,7 @@
     "enableCrewAutoReturn": true,
     // true - return crew check box is selected by default
     // true - включить галочку возврата экипажа по умолчанию
-    "crewReturnByDefault": false,
+    "crewReturnByDefault": true,
     // Number of perks to show without grouping
     // Количество перков, которые отображаются без группировки
     "crewMaxPerksCount": 8,
