@@ -6,5 +6,5 @@ wget -q https://dl1.modxvm.com/bin/$XVM_RELEASE -O $XVM_RELEASE
 echo "Extracting..."
 unzip -q $XVM_RELEASE -d latest
 echo "Done."
-find .. -name '*.pyc' -delete
+find ../.. -name '*.pyc' -delete
 bcomp "WoT configs"
