@@ -28,5 +28,5 @@ if($XVM_VERSION) {
     Pop-Location
     Write-Output "Launch Beyond Compare..."
     bcomp . .\latest\res_mods\configs
-    Write-Output "Done."
+    Write-Output "Done. REMEMBER TO REPLACE py_macro WITH THE ONE FROM latest!!!"
 }
