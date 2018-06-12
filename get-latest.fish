@@ -1,10 +1,10 @@
 #!/usr/local/bin/fish
 function doit
-    set x_found ""
-    set XVM_VERSION ""
+    set -l x_found ""
+    set -l XVM_VERSION ""
     for option in $argv
         if test "$x_found" = "x"
-            set -g XVM_VERSION $option
+            set XVM_VERSION $option
             break
         end
         switch "$option"
