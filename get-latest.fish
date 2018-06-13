@@ -29,6 +29,8 @@ function doit
         echo "Extracting..."
         unzip -q $XVM_RELEASE -d latest
         find ../.. -name '*.pyc' -delete
+        rm -rf ../mods
+        mv latest/res_mods/mods ..
         bcomp "WoT configs"
         echo "Done."
     end
