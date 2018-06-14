@@ -4,7 +4,7 @@ param (
     [switch]$DEV_XVM
 )
 
-if ($DEV_XVM) {
+if ($DEV_XVM) {
     $XVM_VERSION = "DEV"
 }
 else {
@@ -38,9 +38,10 @@ if ($XVM_VERSION) {
     Write-Output "Extracting..."
     Expand-Archive "$XVM_RELEASE" -DestinationPath latest
     Write-Output "Clearing old PYC-files..."
-    Get-ChildItem -Path "$($global:PSScriptRoot)/../.." -Filter *.pyc -Recurse | ForEach-Object ($_) {Remove-Item $_.FullName}
-    Remove-Item "$($global:PSScriptRoot)/../mods" -Recurse -Force
-    Copy-Item -Recurse "$($global:PSScriptRoot)/latest/res_mods/mods" "$($global:PSScriptRoot)/../mods"
+    $scriptDir = $(Split-Path $MyInvocation.MyCommand.Path)
+    Get-ChildItem -Path "$scriptDir/../.." -Filter *.pyc -Recurse | ForEach-Object ($_) {Remove-Item $_.FullName}
+    Remove-Item "$scriptDir/../mods" -Recurse -Force
+    Copy-Item -Recurse "$scriptDir/latest/res_mods/mods" "$scriptDir/../mods"
     Write-Output "Launch Beyond Compare..."
     Write-Output "REMEMBER TO REPLACE py_macro WITH THE ONE FROM latest!!!"
     bcomp . ./latest/res_mods/configs
