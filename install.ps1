@@ -1,2 +1,2 @@
-@echo off
-copy resources\sixthsense.png ..\mods\shared_resources\xvm\res\sixthsense.png
+#!/usr/local/bin/pwsh
+Copy-Item -v resources/sixthsense.png "$($global:PSScriptRoot)/../mods/shared_resources/xvm/res/sixthsense.png"
