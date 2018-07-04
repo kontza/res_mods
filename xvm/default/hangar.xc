@@ -10,9 +10,18 @@
     // Show "Premium shop" button
     // Показать кнопку "Премиум магазин"
     "showPremiumShopButton": true,
+    // Show "Create squad" text on the squad creation button
+    // Показать текст "Создать взвод" на кнопке создания взвода
+    "showCreateSquadButtonText": true,
+    // Show selected battle mode text
+    // Показать текст с названием выбранного режима боя
+    "showBattleTypeSelectorText": true,
     // Show "General chat" button
     // Показать кнопку "Общий чат"
     "showGeneralChatButton": true,
+    // false - disable display promo of premium vehicle (on the background in the hangar)
+    // false - отключить отображение рекламы премиум техники (на фоне в ангаре)
+    "showPromoPremVehicle": true,
     // true - enable locker for gold
     // true - включить замок для золота
     "enableGoldLocker": false,
@@ -352,6 +361,14 @@
         "blur": 4,
         "strength": 2
       }
+    },
+    // Show/hide notifications counters in the main menu
+    // Показывать/прятать счетчики уведомлений в главном меню
+    "notificationCounter": {
+      "store": true,                        // Store / Магазин
+      "missions": true,                     // Missions / Задачи
+      "profile": true,                      // Service Record / Достижения
+      "PersonalMissionOperationsPage": true // Campaigns / Кампании
     },
     // Parameters for tank carousel
     // Параметры карусели танков
