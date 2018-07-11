@@ -688,6 +688,7 @@
     "ussr-R86_LTP_bootcamp":                 {"name": null, "short": null},
     "ussr-R87_T62A":                         {"name": null, "short": null},
     "ussr-R87_T62A_fallout":                 {"name": null, "short": null},
+    "ussr-R87_T62A_sport":                   {"name": null, "short": null},
     "ussr-R88_Object268":                    {"name": null, "short": null},
     "ussr-R89_SU122_44":                     {"name": null, "short": null},
     "ussr-R90_IS_4M":                        {"name": null, "short": null},
