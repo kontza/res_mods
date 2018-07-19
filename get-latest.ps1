@@ -1,7 +1,8 @@
 #!/usr/local/bin/pwsh
 param (
     [string]$XVM_VERSION = "",
-    [switch]$DEV_XVM
+    [switch]$DEV_XVM,
+    [switch]$verbose
 )
 
 if ($DEV_XVM) {
@@ -39,11 +40,13 @@ if ($XVM_VERSION) {
     Expand-Archive "$XVM_RELEASE" -DestinationPath latest
     Write-Output "Clearing old PYC-files..."
     $scriptDir = $(Split-Path $MyInvocation.MyCommand.Path)
+    if ($verbose) {
+        Write-Output "[scriptDir = $scriptDir]"
+    }
     Get-ChildItem -Path "$scriptDir/../.." -Filter *.pyc -Recurse | ForEach-Object ($_) {Remove-Item $_.FullName}
     Remove-Item "$scriptDir/../mods" -Recurse -Force
-    Copy-Item -Recurse "$scriptDir/latest/res_mods/mods" "$scriptDir/../mods"
+§    Copy-Item -Recurse "$scriptDir/latest/res_mods/mods" "$scriptDir/../mods"
     Write-Output "Launch Beyond Compare..."
-    Write-Output "REMEMBER TO REPLACE py_macro WITH THE ONE FROM latest!!!"
     bcomp . ./latest/res_mods/configs
     Write-Output "Done."
 }
