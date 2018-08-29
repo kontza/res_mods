@@ -22,9 +22,6 @@ if (Test-Path ".\latest\res_mods\configs\xvm\py_macro") {
     Write-Output "$prefix .\latest\res_mods\configs\xvm\py_macro"
 }
 
-Copy-Item "resources\sixthsense.png" ".\..\mods\shared_resources\xvm\res\sixthsense.png"
-Write-Output "Copied the sixth sense -image."
-
 if (Test-Path ".\latest\mods") {
     Remove-Item -Recurse -Force ".\..\..\mods"
     Copy-Item -Recurse ".\latest\mods" ".\..\.."
@@ -32,3 +29,14 @@ if (Test-Path ".\latest\mods") {
 } else {
     Write-Output "$prefix $scriptDir\latest\mods"
 }
+
+if (Test-Path ".\latest\res_mods\mods") {
+    Remove-Item -Recurse -Force ".\..\mods"
+    Copy-Item -Recurse ".\latest\res_mods\mods" ".\.."
+    Write-Output "Processed 'res_mods\mods'."
+} else {
+    Write-Output "$prefix $scriptDir\latest\res_mods\mods"
+}
+
+Copy-Item "resources\sixthsense.png" ".\..\mods\shared_resources\xvm\res\sixthsense.png"
+Write-Output "Copied the sixth sense -image."
