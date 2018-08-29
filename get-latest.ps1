@@ -37,6 +37,8 @@ if ($XVM_VERSION) {
     }
     if (Test-Path $XVM_RELEASE) {
         $answer = Read-Host "$XVM_RELEASE already exists. Download again? (yes/no)"
+    } else {
+        $answer = "yes"
     }
     if ($answer.Trim().ToLower().StartsWith("y")) {
         if ($verbose) {
