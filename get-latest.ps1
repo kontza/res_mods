@@ -2,6 +2,7 @@
 param (
     [string]$XVM_VERSION = "",
     [switch]$DEV_XVM,
+    [switch]$noBCompare,
     [switch]$verbose
 )
 
@@ -34,26 +35,35 @@ if ($XVM_VERSION) {
     if (Test-Path "latest") {
         Remove-Item -recurse -force latest
     }
-    if ($verbose) {
-        Write-Output "Downloading '$XVM_URL'..."
+    if (Test-Path $XVM_RELEASE) {
+        $answer = Read-Host "$XVM_RELEASE already exists. Download again? (yes/no)"
     }
-    else {
-        Write-Output "Downloading '$XVM_RELEASE'..."
+    if ($answer.Trim().ToLower().StartsWith("y")) {
+        if ($verbose) {
+            Write-Output "Downloading '$XVM_URL'..."
+        }
+        else {
+            Write-Output "Downloading '$XVM_RELEASE'..."
+        }
+        Invoke-WebRequest -uri $XVM_URL -out "$XVM_RELEASE"
     }
-    Invoke-WebRequest -uri $XVM_URL -out "$XVM_RELEASE"
     if (Test-Path $XVM_RELEASE) {
         Write-Output "Extracting..."
         Expand-Archive "$XVM_RELEASE" -DestinationPath latest
         Write-Output "Clearing old PYC-files..."
         $scriptDir = $(Split-Path $MyInvocation.MyCommand.Path)
+        Set-Location $scriptDir
         if ($verbose) {
             Write-Output "[scriptDir = $scriptDir]"
         }
-        Get-ChildItem -Path "$scriptDir/../.." -Filter *.pyc -Recurse | ForEach-Object ($_) {Remove-Item $_.FullName}
-        Remove-Item "$scriptDir/../mods" -Recurse -Force
-        Copy-Item -Recurse "$scriptDir/latest/res_mods/mods" "$scriptDir/../mods"
-        Write-Output "Launch Beyond Compare..."
-        bcomp . ./latest/res_mods/configs
+        Get-ChildItem -Path "./../.." -Filter *.pyc -Recurse | ForEach-Object ($_) {Remove-Item $_.FullName}
+        if ($noBCompare) {
+            Write-Output "Bypassing Beyond Compare."
+        }
+        else {
+            Write-Output "Launch Beyond Compare..."
+            bcomp . ./latest/res_mods/configs
+        }
         Write-Output "Done."
     }
     else {
