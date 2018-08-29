@@ -58,7 +58,7 @@ if ($XVM_VERSION) {
         if ($verbose) {
             Write-Output "[scriptDir = $scriptDir]"
         }
-        Get-ChildItem -Path "./../.." -Filter *.pyc -Recurse | ForEach-Object ($_) {Remove-Item $_.FullName}
+        Get-ChildItem -Path ".\..\.." -Filter *.pyc -Recurse | ForEach-Object ($_) {Remove-Item $_.FullName}
         if ($noBCompare) {
             Write-Output "Bypassing Beyond Compare."
         }
