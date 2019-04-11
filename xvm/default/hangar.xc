@@ -4,36 +4,33 @@
  */
 {
   "hangar": {
-    // true - show "Buy premium" button.
-    // true - показать кнопку "Купить премиум".
+    // Show "Buy premium" button.
+    // Показать кнопку "Купить премиум".
     "showBuyPremiumButton": true,
-    // true - show "Premium shop" button.
-    // true - показать кнопку "Премиум магазин".
+    // Show "Premium shop" button.
+    // Показать кнопку "Премиум магазин".
     "showPremiumShopButton": true,
-    // true - show "Create squad" text on the squad creation button.
-    // true - показать текст "Создать взвод" на кнопке создания взвода.
+    // Show "Create squad" text on the squad creation button.
+    // Показать текст "Создать взвод" на кнопке создания взвода.
     "showCreateSquadButtonText": true,
-    // true - show selected battle mode text.
-    // true - показать текст с названием выбранного режима боя.
+    // Show selected battle mode text.
+    // Показать текст с названием выбранного режима боя.
     "showBattleTypeSelectorText": true,
-    // true - show "Referral Program" button.
-    // true - показать кнопку "Реферальная программа".
+    // Show "Referral Program" button.
+    // Показать кнопку "Реферальная программа".
     "showReferralButton": true,
-    // true - show "General chat" button.
-    // true - показать кнопку "Общий чат".
+    // Show "General chat" button.
+    // Показать кнопку "Общий чат".
     "showGeneralChatButton": true,
     // false - disable display promo of premium vehicle (on the background in the hangar).
     // false - отключить отображение рекламы премиум техники (на фоне в ангаре).
     "showPromoPremVehicle": false,
-    // true - show info window with list of received awards for "Reward for Merit".
-    // true - показывать информационное окно с перечнем полученных наград за "Довольствие".
-    "showRewardWindow": true,
     // "Combat Intelligence" - show/hide notifications in the main window and counters in the menu.
     // "Полевая почта" - показывать/прятать уведомления в главном окне и счетчики в меню.
     "combatIntelligence": {
       // false - disable display pop-up messages in the hangar.
       // false - отключить отображение всплывающих сообщений в ангаре.
-      "showPopUpMessages": false,
+      "showPopUpMessages": true,
       // false - disable display unread notifications counter in the menu.
       // false - отключить отображение счетчика непрочитанных уведомлений в меню.
       "showUnreadCounter": true
@@ -68,7 +65,7 @@
     },
     // true - enable crew auto return function.
     // true - включить функцию автовозврата экипажа.
-    "enableCrewAutoReturn": true,
+    "enableCrewAutoReturn": false,
     // true - return crew check box is selected by default.
     // true - включить галочку возврата экипажа по умолчанию.
     "crewReturnByDefault": false,

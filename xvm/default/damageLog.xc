@@ -1,53 +1,5 @@
 ﻿/**
- * Log of the received damage.
- * For additional settings see battleLabelsTemplates.xc
- * Лог полученного урона.
- * Дополнительные настройки см. в battleLabelsTemplates.xc
- * 
- * https://kr.cm/f/t/35169/
 
-  Macros used in damageLog:
-  Макросы используемые в damageLog:
-
-    {{number}}         - line number / номер строки.
-    {{dmg}}            - received damage / полученный урон.
-    {{dmg-kind}}       - kind of the received damage (attack, fire, ramming, ...) / тип полученного урона (атака, пожар, таран, ...).
-    {{c:dmg-kind}}     - color by damage kind / цвет по типу урона.
-    {{hit-effects}}    - hit kind (with damage, ricochet, not penetrated, no damage) / тип попадания (с уроном, рикошет, не пробито, без урона).
-    {{c:hit-effects}}  - color by hit kind / цвет по типу попадания.
-    {{type-shell}}     - shell kind / тип снаряда.
-    {{c:type-shell}}   - color by shell kind / цвет по типу снаряда.
-    {{vtype}}          - vehicle type / тип техники.
-    {{c:vtype}}        - color by vehicle type / цвет по типу техники.
-    {{team-dmg}}       - team attachment of the attacker (ally , enemy, self damage) / командная принадлежность атакующего (союзник, противник, урон по себе).
-    {{c:team-dmg}}     - color by team attachment of the attacker (ally , enemy, self damage) / цвет по командной принадлежности атакующего (союзник, противник, урон по себе).
-    {{costShell}}      - shell currency (gold, credits) / валюта снаряда (золото, кредиты).
-    {{c:costShell}}    - color by shell currency / цвет по валюте снаряда.
-    {{vehicle}}        - attacker vehicle name / название техники атакующего.
-    {{name}}           - attacker nickname / никнейм атакующего.
-    {{critical-hit}}   - critical hit / критическое попадание.
-    {{comp-name}}      - vehicle part that was hit (turret, hull, chassis, gun) / часть техники, в которую было попадание (башня, корпус, ходовая, орудие).
-    {{clan}}           - clan name with brackets (empty if no clan) / название клана в скобках (пусто, если игрок не в клане).
-    {{level}}          - vehicle level / уровень техники.
-    {{clannb}}         - clan name without brackets / название клана без скобок.
-    {{clanicon}}       - macro with clan emblem image path value / макрос со значением пути эмблемы клана.
-    {{squad-num}}      - number of squad (1 ,2, ...), empty if not in squad / номер взвода (1, 2, ...), пусто - если игрок не во взводе.
-    {{dmg-ratio}}      - received damage percent / полученный урон в процентах.
-    {{splash-hit}}     - text for damage with shell splinters (HE/HESH) / текст при уроне осколками снаряда (ОФ/ХФ).
-    {{my-alive}}       - value 'al' for alive own vehicle, '' for dead one / возвращает 'al', для живой собственной техники, '' для мертвой.
-    {{reloadGun}}      - gun reloading time / время перезарядки орудия.
-    {{gun-caliber}}    - gun caliber / калибр орудия.
-    {{wn8}}, {{xwn8}}, {{wtr}}, {{xwtr}}, {{eff}}, {{xeff}}, {{wgr}}, {{xwgr}}, {{xte}}, {{r}}, {{xr}} - statistics macros (see macros.txt) / макросы статистики (смотрите macros_ru.txt).
-    {{c:wn8}}, {{c:xwn8}}, {{c:wtr}}, {{c:xwtr}}, {{c:eff}}, {{c:xeff}}, {{c:wgr}}, {{c:xwgr}}, {{c:xte}}, {{c:r}}, {{c:xr}} - color according to the corresponding statistics macro (see macros.txt) / цвет по соответствующему макросу статистики (смотрите macros_ru.txt).
-    {{fire-duration}}  - duration of fire ("groupDamagesFromFire" must be enabled to work) / продолжительность пожара (работает только при включенной опции "groupDamagesFromFire").
-    {{diff-masses}}    - vehicles weights difference during collision / разность масс техники при столкновении.
-    {{nation}}         - vehicle nation / нация техники.
-    {{my-blownup}}     - value 'blownup' if own vehicle's ammunition have been blown up, '' otherwise / возвращает 'blownup', если взорван боекомплект собственной техники, иначе ''.
-    {{stun-duration}}  - stun duration / продолжительность оглушения.
-    {{crit-device}}    - damaged module or shell-shocked crew member / поврежденный модуль или контуженный член экипажа.
-    {{type-shell-key}} - shell kind table key value / название ключа таблицы типа снаряда.
-    {{hitTime}}        - time of the received (blocked) damage in "mm:ss" format / время полученного (заблокированного) урона в формате "мм:сс".
-    {{vehiclename}}    - vehicle system name (usa-A34_M24_Chaffee) / название техники в системе (usa-A34_M24_Chaffee).
 */
 
 {
@@ -251,6 +203,15 @@
         "silver-shell": "#CCCCCC", // credits / кредиты.
         "unknown": ""              // unknown / неизвестно.
       },
+      // true - show hits without damage.
+      // true - отображать попадания без урона.
+      "showHitNoDamage": true,
+      // true - summarize damages from fire.
+      // true - суммировать повреждения от пожара.
+      "groupDamagesFromFire": true,
+      // true - summarize damages from ramming, crash, falling (if more than one damage per second).
+      // true - суммировать повреждения от тарана, столкновения, падения (если больше одного повреждения в секунду).
+      "groupDamagesFromRamming_WorldCollision": true,
       // Shadow settings.
       // Настройки тени.
       "shadow": {
