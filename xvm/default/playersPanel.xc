@@ -397,8 +397,7 @@
     // Options for the "medium2" panels - the second of the medium panels.
     // Режим ушей "medium2" - вторые средние уши в игре.
     "medium2": {
-      // false - disable.
-      // false - отключить.
+      // false - disable (отключить).
       "enabled": true,
       // Displayed standard fields in this mode and their order.
       // Available names: "frags", "badge", "nick", "vehicle".

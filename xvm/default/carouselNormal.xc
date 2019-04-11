@@ -117,12 +117,12 @@
       // Winrate.
       // Процент побед.
       {
-        "enabled": false,
+        "enabled": true,
         "x": 158, "y": 32, "align": "right", "width": 13, "height": 13, "alpha": "{{v.winrate?|0}}",
         "src": "xvm://res/icons/carousel/wins.png"
       },
       {
-        "enabled": false,
+        "enabled": true,
         "x": 145, "y": 28, "align": "right",
         "format": "<b><font face='$FieldFont' size='12' color='{{v.c_winrate|#CFCFCF}}'>{{v.winrate%2d~%}}</font></b>",
         "shadow": ${ "def.textFieldShadow" }
