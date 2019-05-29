@@ -33,7 +33,7 @@
     "combatIntelligence": {
       // false - disable display pop-up messages in the hangar.
       // false - отключить отображение всплывающих сообщений в ангаре.
-      "showPopUpMessages": true,
+      "showPopUpMessages": false,
       // false - disable display unread notifications counter in the menu.
       // false - отключить отображение счетчика непрочитанных уведомлений в меню.
       "showUnreadCounter": true
