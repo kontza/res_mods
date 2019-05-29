@@ -11,8 +11,8 @@
     "hitLogHeader": {
       "enabled": false,
       "updateEvent": "PY(ON_TOTAL_EFFICIENCY), ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},50)}}}}",
-      "y": "{{pp.mode=0?65|35}}",
+      "x": "{{pp.mode=0?{{battletype-key=epic_battle?240|5}}|{{py:sum({{pp.widthLeft}},50)}}}}",
+      "y": "{{pp.mode=0?{{battletype-key=epic_battle?55|65}}|35}}",
       "width": 300,
       "height": 22,
       "textFormat": { "color": "0xF4EFE8", "size": 15 },
@@ -21,10 +21,10 @@
     // Log of applied damage (see hitLog.xc).
     // Лог нанесенного урона (см. hitLog.xc).
     "hitLogBody": {
-      "enabled": false,
+      "enabled": true,
       "updateEvent": "PY(ON_HIT_LOG), ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},{{py:xvm.hitLog.log.x}})}}}}",
-      "y": "{{pp.mode=0?90|{{py:xvm.hitLog.log.y}}}}",
+      "x": "{{pp.mode=0?{{battletype-key=epic_battle?240|5}}|{{py:sum({{pp.widthLeft}},{{py:xvm.hitLog.log.x}})}}}}",
+      "y": "{{pp.mode=0?{{battletype-key=epic_battle?80|90}}|{{py:xvm.hitLog.log.y}}}}",
       "width": 500,
       "height": 1000,
       "layer": "bottom",
@@ -44,10 +44,10 @@
       "format": "{{py:xvm.hitLog.log.bg}}"
     },
     "totalEfficiency": {
-      "enabled": false,
+      "enabled": true,
       "updateEvent": "PY(ON_TOTAL_EFFICIENCY), ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},50)}}}}",
-      "y": "{{pp.mode=0?65|35}}",
+      "x": "{{pp.mode=0?{{battletype-key=epic_battle?240|5}}|{{py:sum({{pp.widthLeft}},50)}}}}",
+      "y": "{{pp.mode=0?{{battletype-key=epic_battle?55|65}}|35}}",
       "width": "{{py:xvm.isStuns?350|260}}",
       "height": 22,
       "textFormat": { "size": 16 },
@@ -56,7 +56,7 @@
     // Total hp indicator.
     // Индикатор общего HP команд.
     "totalHP": {
-      "enabled": false,
+      "enabled": true,
       "updateEvent": "PY(ON_UPDATE_HP)",
       "x": 0,
       "y": 30,
@@ -64,7 +64,7 @@
       "align": "center",
       "shadow": { "distance": 1, "angle": 90, "alpha": 80, "blur": 5, "strength": 1.5 },
       "textFormat": { "font": "mono", "size": 18, "align": "center" },
-      "format": "{{py:xvm.total_hp.text}}"
+      "format": "{{battletype-key!=epic_battle?{{py:xvm.total_hp.text}}}}"
     },
     // Avg damage on current vehicle.
     // Средний урон на текущей технике.
@@ -82,7 +82,7 @@
     // Threshold necessary for achievements "High caliber".
     // Порог необходимый для получения достижения "Основной калибр".
     "mainGun": {
-      "enabled": false,
+      "enabled": true,
       "updateEvent": "PY(ON_TOTAL_EFFICIENCY)",
       "x": 170,
       "y": 30,
@@ -94,7 +94,7 @@
     // Log of the received damage (see damageLog.xc).
     // Лог полученного урона (см. damageLog.xc).
     "damageLog": {
-      "enabled": false,
+      "enabled": true,
       "updateEvent": "PY(ON_HIT)",
       "x": "{{py:xvm.damageLog.log.x}}",
       "y": "{{py:xvm.damageLog.log.y}}",
@@ -133,7 +133,7 @@
     // Display the last damage (hit) (see damageLog.xc).
     // Отображение последнего урона (попадания) (см. damageLog.xc).
     "lastHit": {
-      "enabled": false,
+      "enabled": true,
       "updateEvent": "PY(ON_LAST_HIT)",
       "x": "{{py:xvm.damageLog.lastHit.x}}",
       "y": "{{py:xvm.damageLog.lastHit.y}}",
