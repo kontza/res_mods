@@ -18,8 +18,8 @@
     }
   },
   "formats": [
-      ${ "../default/battleLabelsTemplates.xc":"def.hitlogHeader" },
-      ${ "../default/battleLabelsTemplates.xc":"def.hitlogBody" },
+      ${ "../default/battleLabelsTemplates.xc":"def.hitLogBackground" },
+      ${ "../default/battleLabelsTemplates.xc":"def.hitLogBody" },
       ${ "../default/battleLabelsTemplates.xc":"def.totalHP" },
       ${ "../default/battleLabelsTemplates.xc":"def.avgDamage" },
       ${ "../default/battleLabelsTemplates.xc":"def.mainGun" },
@@ -31,7 +31,7 @@
       ${ "../default/battleLabelsTemplates.xc":"def.repairTimeEngine" },
       ${ "../default/battleLabelsTemplates.xc":"def.repairTimeGun" },
       ${ "../default/battleLabelsTemplates.xc":"def.repairTimeTurret" },
-      ${ "../default/battleLabelsTemplates.xc":"def.repairTimeTracks" }, 
+      ${ "../default/battleLabelsTemplates.xc":"def.repairTimeComplex" }, 
       ${ "../default/battleLabelsTemplates.xc":"def.repairTimeSurveying" },
       ${ "../default/battleLabelsTemplates.xc":"def.repairTimeRadio" }
   ]
