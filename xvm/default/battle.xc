@@ -25,7 +25,7 @@
     "sixthSenseIcon": "xvm://res/SixthSense.png",
     // Duration of the sixth sense indicator (msec).
     // Длительность отображения индикатора 6-го чувства (мсек).
-    "sixthSenseDuration": 2000,
+    "sixthSenseDuration": 5000,
     // true - hide the tips in battle.
     // true - скрыть подсказки в бою.
     "battleHint": {
