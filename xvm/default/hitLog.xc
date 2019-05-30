@@ -1,14 +1,14 @@
-﻿/**
+/**
  * Log of applied damage.
  * For additional settings see battleLabelsTemplates.xc
  * Лог нанесенного урона.
  * Дополнительные настройки см. в battleLabelsTemplates.xc
- * 
+ *
  * https://kr.cm/f/t/40466/
 
   Macros used in hitLog:
   Макросы используемые в hitLog:
-   
+
     {{dmg}}                - last damage / последний нанесенный урон.
     {{dmg-kind}}           - type of damage / тип нанесенного урона (атака, пожар, таран, ...).
     {{c:dmg-kind}}         - color by damage kind / цвет по типу урона.
@@ -30,7 +30,7 @@
     {{squad-num}}          - number of squad (1,2,...), empty if not in squad / номер взвода (1,2,...), пусто - если игрок не во взводе.
     {{dmg-ratio}}          - last damage in percent / последний нанесенный урон в процентах.
     {{splash-hit}}         - value 'splash', if damage is caused by shell splinters (HE/HESH), empty if not / возвращает 'splash', если урон нанесен осколками снаряда (ОФ/ХФ), иначе пусто.
-    {{critical-hit}}       - value 'crit', if critical damage was done, empty if not / возвращает 'crit', если было нанесено критическое повреждение, иначе пусто.    
+    {{critical-hit}}       - value 'crit', if critical damage was done, empty if not / возвращает 'crit', если было нанесено критическое повреждение, иначе пусто.
     {{alive}}              - value 'al', if the vehicle after the attack is not destroyed, empty if destroyed / возвращает 'al', если техника после атаки не разрушена, пусто для разрушенной.
     {{wn8}}, {{xwn8}}, {{wtr}}, {{xwtr}}, {{eff}}, {{xeff}}, {{wgr}}, {{xwgr}}, {{xte}}, {{r}}, {{xr}} - statistics macros (see macros.txt) / макросы статистики (смотрите macros_ru.txt).
     {{c:wn8}}, {{c:xwn8}}, {{c:wtr}}, {{c:xwtr}}, {{c:eff}}, {{c:xeff}}, {{c:wgr}}, {{c:xwgr}}, {{c:xte}}, {{c:r}}, {{c:xr}} - color according to the corresponding statistics macro (see macros.txt) / цвет по соответствующему макросу статистики (смотрите macros_ru.txt).
@@ -62,18 +62,18 @@
     // Log of applied damage.
     // Лог нанесенного урона.
     "log": {
-      //true - allow to move log in battle and disallow macros for "x" and "y" settings.
-      //false - disallow to move log in battle and allow macros for "x" and "y" settings.
-      //true - разрешить перемещение лога в бою и запретить макросы в настройках "x" и "y".
-      //false - запретить перемещение лога в бою и разрешить макросы в настройках "x" и "y".
+      // true - allow to move log in battle and disallow macros for "x" and "y" settings.
+      // false - disallow to move log in battle and allow macros for "x" and "y" settings.
+      // true - разрешить перемещение лога в бою и запретить макросы в настройках "x" и "y".
+      // false - запретить перемещение лога в бою и разрешить макросы в настройках "x" и "y".
       "moveInBattle": false,
       "x": 50,
       "y": 60,
       // Group hits by players name.
       // Группировать попадания по имени игрока.
       "groupHitsByPlayer": true,
-      // Number of lines.
-      // Количество строк.
+      // Number of lines. //TO DO.
+      // Количество строк. Можно использовать макрос {{battletype-key}}.
       "lines": 15,
       // Insert order: false - insert new values to begin, true - add to end.
       // Сортировка попаданий: false - новые значения добавляются сверху, true - снизу.
@@ -104,10 +104,10 @@
         "death_zone": "#CCCCCC",      // death zone / смертельная зона.
         "gas_attack": "#CCCCCC",      // gas attack / газовая атака.
         "art_attack": "#CCCCCC",      // art attack / артиллерийская поддержка.
-        "air_strike": "#CCCCCC"       // air strike / поддержка авиации.        
+        "air_strike": "#CCCCCC"       // air strike / поддержка авиации.
       },
-      // Type of damage (macro {{dmg-kind-player}}). 
-      // Тип нанесенного урона (макрос {{dmg-kind-player}}). 
+      // Type of damage (macro {{dmg-kind-player}}).
+      // Тип нанесенного урона (макрос {{dmg-kind-player}}).
       "dmg-kind-player": {
         "shot":            "<font size='6'> </font><font face='xvm'>&#x50;</font>",  // shot / попадание.
         "fire":            "<font size='6'> </font><font face='xvm'>&#x51;</font>",  // fire / пожар.
@@ -119,7 +119,7 @@
         "gas_attack":      "GA",                                                     // gas attack / газовая атака.
         "art_attack":      "<font face='xvm'>&#x110;</font>",                        // art attack / артиллерийская поддержка.
         "air_strike":      "<font face='xvm'>&#x111;</font>"                         // air strike / поддержка авиации.
-      },  
+      },
       // Shell kind (macro {{type-shell}}).
       // Тип снаряда (макрос {{type-shell}}).
       "type-shell": {
@@ -202,14 +202,14 @@
       },
       // List of hits format (macros allowed, see macros.txt).
       // Формат лога попаданий (допускаются макроподстановки, см. macros.txt)
-      "formatHistory": "<textformat leading='-4' tabstops='[20,50,90,190]'><font size='12'>\u00D7{{n-player}}:</font><tab><font color='{{c:dmg-kind}}'>{{dmg}}</font><tab>| {{dmg-player}}<tab>|<font color='{{c:vtype}}'>{{vehicle}}</font> <font face='xvm' size='15' color='#FF0000'>{{alive? |{{blownup?&#x7C;|<font size='19'>&#x77;</font>}}}}</font><tab>|{{name%.15s~..}} <font alpha='#A0'>{{clan}}</font></textformat>"
+      "formatHistory": "<textformat leading='-4' tabstops='[20,50,90,205]'><font size='12'>\u00D7{{n-player}}:</font><tab><font color='{{c:dmg-kind}}'>{{dmg}}</font><tab>| {{dmg-player}}<tab>|<font color='{{c:vtype}}'>{{vehicle}}</font> <font face='xvm' size='15' color='#FF0000'>{{alive? |{{blownup?&#x7C;|<font size='19'>&#x77;</font>}}}}</font><tab>|{{name%.15s~..}} <font alpha='#A0'>{{clan}}</font></textformat>"
     },
     // Log of applied damage (alternative mode).
     // Лог нанесенного урона (альтернативный режим).
     "logAlt": {
       "$ref": { "path":"hitLog.log" },
       "formatHistory": ""
-      //"formatHistory": "<textformat leading='-4' tabstops='[20,50,90,190]'><font size='12'>\u00D7{{n-player}}:</font><tab><font color='{{c:dmg-kind}}'>{{dmg-ratio~%}}</font><tab>| {{dmg-ratio-player~%}}<tab>|<font color='{{c:vtype}}'>{{vehicle}}</font> <font face='xvm' size='15' color='#FF0000'>{{alive? |{{blownup?&#x7C;|<font size='19'>&#x77;</font>}}}}</font><tab>|{{name%.15s~..}} <font alpha='#A0'>{{clan}}</font></textformat>"
+      //"formatHistory": "<textformat leading='-4' tabstops='[20,50,90,205]'><font size='12'>\u00D7{{n-player}}:</font><tab><font color='{{c:dmg-kind}}'>{{dmg-ratio~%}}</font><tab>| {{dmg-ratio-player~%}}<tab>|<font color='{{c:vtype}}'>{{vehicle}}</font> <font face='xvm' size='15' color='#FF0000'>{{alive? |{{blownup?&#x7C;|<font size='19'>&#x77;</font>}}}}</font><tab>|{{name%.15s~..}} <font alpha='#A0'>{{clan}}</font></textformat>"
     },
     // Background of the log of applied damage.
     // Подложка лога нанесенного урона.

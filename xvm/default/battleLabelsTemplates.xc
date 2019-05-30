@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Battle inteface text fields.
  * Текстовые поля боевого интерфейса.
  */
@@ -6,18 +6,25 @@
   // Definitions.
   // Шаблоны.
   "def": {
+    // Header of the log of applied damage.
+    // Заголовок лога нанесенного урона.
+    "hitLogHeader": {
       "enabled": false,
       "updateEvent": "PY(ON_TOTAL_EFFICIENCY), ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},50)}}}}",
-      "y": "{{pp.mode=0?65|35}}",
+      "x": "{{pp.mode=0?{{battletype-key=epic_battle?240|5}}|{{py:sum({{pp.widthLeft}},50)}}}}",
+      "y": "{{pp.mode=0?{{battletype-key=epic_battle?55|65}}|35}}",
       "width": 300,
       "height": 22,
       "textFormat": { "color": "0xF4EFE8", "size": 15 },
+      "format": "{{py:xvm.totalDamage=0?{{l10n:Hits}}: <font size='13'>#0</font>|{{l10n:Hits}}: <font size='13'>#{{py:xvm.numberHitsDealt}}</font> {{l10n:Total}}: <font color='{{py:xvm.totalDamageColor}}'><b>{{py:xvm.totalDamage}}</b></font> {{l10n:Last}}: <font color='{{py:xvm.dmgKindColor}}'><b>{{py:xvm.dmg}}</b></font>}}"
     },
+    // Log of applied damage (see hitLog.xc).
+    // Лог нанесенного урона (см. hitLog.xc).
+    "hitLogBody": {
       "enabled": false,
       "updateEvent": "PY(ON_HIT_LOG), ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},{{py:xvm.hitLog.log.x}})}}}}",
-      "y": "{{pp.mode=0?90|{{py:xvm.hitLog.log.y}}}}",
+      "x": "{{pp.mode=0?{{battletype-key=epic_battle?240|5}}|{{py:sum({{pp.widthLeft}},{{py:xvm.hitLog.log.x}})}}}}",
+      "y": "{{pp.mode=0?{{battletype-key=epic_battle?80|90}}|{{py:xvm.hitLog.log.y}}}}",
       "width": 500,
       "height": 1000,
       "layer": "bottom",
@@ -39,8 +46,8 @@
     "totalEfficiency": {
       "enabled": false,
       "updateEvent": "PY(ON_TOTAL_EFFICIENCY), ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},50)}}}}",
-      "y": "{{pp.mode=0?65|35}}",
+      "x": "{{pp.mode=0?{{battletype-key=epic_battle?240|5}}|{{py:sum({{pp.widthLeft}},50)}}}}",
+      "y": "{{pp.mode=0?{{battletype-key=epic_battle?55|65}}|35}}",
       "width": "{{py:xvm.isStuns?350|260}}",
       "height": 22,
       "textFormat": { "size": 16 },
@@ -58,12 +65,11 @@
       "shadow": { "distance": 1, "angle": 90, "alpha": 80, "blur": 5, "strength": 1.5 },
       "textFormat": { "font": "mono", "size": 18, "align": "center" },
       "format": "{{battletype-key!=epic_battle?{{py:xvm.total_hp.text}}}}"
-      "format": "{{py:xvm.total_hp.text}}"
     },
     // Avg damage on current vehicle.
     // Средний урон на текущей технике.
     "avgDamage": {
-      "enabled": true,
+      "enabled": false,
       "updateEvent": "PY(ON_TOTAL_EFFICIENCY)",
       "x": -170,
       "y": 30,
