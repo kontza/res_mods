@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Main configuration file (hereinafter - the configuration).
  *
  * Attention! Use \n as newline character instead of <br> tag
@@ -23,7 +23,7 @@
 
   // Automatically reload config. Requires client restart.
   // Автоматически перезагружать конфиг. Требует перезапуска клиента.
-  "autoReloadConfig": false,
+  "autoReloadConfig": true,
 
   // Language used in mod
   // "auto" - automatically detect language from game client,
