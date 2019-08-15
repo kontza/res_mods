@@ -1,12 +1,12 @@
 ﻿/**
- * Parameters for login screen
- * Параметры экрана логина
+ * Parameters for login screen.
+ * Параметры экрана логина.
  */
 {
   "login": {
     // Save last server
     // Сохранять последний сервер
-    "saveLastServer": true,
+    "saveLastServer": false,
     // Auto enter to the game
     // Автоматический вход в игру
     "autologin": false,
