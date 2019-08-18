@@ -1,10 +1,41 @@
 #!/usr/local/bin/pwsh
+<#
+.SYNOPSIS
+    This script is tool to help in updating your XVM config to be compatible with the latest XVM version.
+
+.DESCRIPTION
+    The script downloads a version of the XVM, the runs Beyond Compare (tm) against your
+    own config vs the downloaded XVM's config. Once comparison is done, it will replace
+    the XVM with the downloaded one, along installing your custom sixth sense icon
+    from the resources folder.
+
+.PARAMETER XVM_VERSION
+    Specify the version of XVM to download.
+.PARAMETER DEVXVM
+    Instruct the script to download a development version of the XVM.
+.PARAMETER noBCompare
+    Skip the Beyond Compare (tm) stage.
+.PARAMETER verbose
+    Print out more information about what is being done.
+.EXAMPLE
+    C:\PS> 
+    <Description of example>
+.NOTES
+    Author: Juha Ruotsalainen
+#>
 param (
     [string]$XVM_VERSION = "",
     [switch]$DEV_XVM,
     [switch]$noBCompare,
-    [switch]$verbose
+    [switch]$verbose,
+    [switch]$sixthSense
 )
+$scriptDir = $(Split-Path $MyInvocation.MyCommand.Path)
+
+function Install6thSenseIcon {
+    Set-Location $scriptDir
+    Copy-Item -Verbose ".\resources\sixthsense.png" ".\..\mods\shared_resources\xvm\res\sixthsense.png"
+}
 
 if ($DEV_XVM) {
     $XVM_VERSION = "DEV"
