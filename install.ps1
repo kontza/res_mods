@@ -9,53 +9,57 @@
     the XVM with the downloaded one, along installing your custom sixth sense icon
     from the resources folder.
 
+    Beyond Compare, by Scooter Software, is the world's best diff-tool.
+
 .PARAMETER XVM_VERSION
-    Specify the version of XVM to download.
-.PARAMETER DEVXVM
-    Instruct the script to download a development version of the XVM.
+    Specify the version of XVM to download. Use 'dev' as the version
+    to instruct the script to download the development version
+    of the XVM.
 .PARAMETER noBCompare
     Skip the Beyond Compare (tm) stage.
-.PARAMETER verbose
-    Print out more information about what is being done.
+.PARAMETER sixthsense¨
+    Only install the sixth sense icon.
+.PARAMETER finalize
+    Only run the finalize step, i.e. replace the old XVM with the
+    new downloaded one, and copy the sixth sense icon.
 .EXAMPLE
-    C:\PS> 
-    <Description of example>
+    .\install.ps1 -x 8.0.0 -v -n
+    Download the 8.0.0 version of the XVM, print out verbosely
+    what is being done, and skip the Beyond Compare (tm) step.
 .NOTES
     Author: Juha Ruotsalainen
 #>
 param (
     [string]$XVM_VERSION = "",
-    [switch]$DEV_XVM,
     [switch]$noBCompare,
-    [switch]$verbose,
-    [switch]$sixthSense
+    [switch]$sixthSense,
+    [switch]$finalize
 )
+$VerbosePreference = "Continue"
 $scriptDir = $(Split-Path $MyInvocation.MyCommand.Path)
+Set-Location $scriptDir
+Write-Verbose "scriptDir = $scriptDir"
 
 function Install6thSenseIcon {
-    Set-Location $scriptDir
     Copy-Item -Verbose ".\resources\sixthsense.png" ".\..\mods\shared_resources\xvm\res\sixthsense.png"
 }
 
-if ($DEV_XVM) {
-    $XVM_VERSION = "DEV"
-}
-else {
+function Main {
+    $XVM_VERSION = $XVM_VERSION.ToUpper()
     if ($XVM_VERSION) {
-        Write-Output "Trying to work with XVM $XVM_VERSION..."
+        Write-Verbose "Trying to work with XVM $XVM_VERSION..."
     }
     else {
         $XVM_VERSION = $(Invoke-WebRequest -uri http://nightly.modxvm.com/download/default/xvm_version.txt -usebasic).content.Trim()
         $answer = Read-Host "No XVM version specified (via -x). Try with the latest ($XVM_VERSION) (yes/no)"
         if (!$answer.Trim().ToLower().StartsWith("y")) {
             $XVM_VERSION = ""
-            Write-Host "All done, then."
+            Write-Verbose "All done, then."
+            return
         }
     }
-}
 
-if ($XVM_VERSION) {
-    if ($DEV_XVM) {
+    if ($XVM_VERSION.StartsWith("DEV")) {
         $XVM_RELEASE = "latest_xvm.zip"
         $XVM_URL = "http://nightly.modxvm.com/download/default/$XVM_RELEASE"
     }
@@ -68,38 +72,82 @@ if ($XVM_VERSION) {
     }
     if (Test-Path $XVM_RELEASE) {
         $answer = Read-Host "$XVM_RELEASE already exists. Download again? (yes/no)"
-    } else {
+    }
+    else {
         $answer = "yes"
     }
     if ($answer.Trim().ToLower().StartsWith("y")) {
-        if ($verbose) {
-            Write-Output "Downloading '$XVM_URL'..."
+        Write-Verbose "Downloading '$XVM_URL'..."
+        try {
+            Invoke-WebRequest -uri $XVM_URL -out "$XVM_RELEASE"
+        } catch {
+            $statusCode = $_.Exception.Response.StatusCode.Value__
+            Write-Verbose "Failed due to HTTP $statusCode"
+            return
         }
-        else {
-            Write-Output "Downloading '$XVM_RELEASE'..."
-        }
-        Invoke-WebRequest -uri $XVM_URL -out "$XVM_RELEASE"
     }
     if (Test-Path $XVM_RELEASE) {
-        Write-Output "Extracting..."
+        Write-Verbose "Extracting..."
         Expand-Archive "$XVM_RELEASE" -DestinationPath latest
-        Write-Output "Clearing old PYC-files..."
-        $scriptDir = $(Split-Path $MyInvocation.MyCommand.Path)
-        Set-Location $scriptDir
-        if ($verbose) {
-            Write-Output "[scriptDir = $scriptDir]"
-        }
-        Get-ChildItem -Path ".\..\.." -Filter *.pyc -Recurse | ForEach-Object ($_) {Remove-Item $_.FullName}
+        Write-Verbose "Clearing old PYC-files..."
+        Get-ChildItem -Path ".\..\.." -Filter *.pyc -Recurse | ForEach-Object ($_) { Remove-Item $_.FullName }
         if ($noBCompare) {
-            Write-Output "Bypassing Beyond Compare."
+            Write-Verbose "Bypassing Beyond Compare."
         }
         else {
-            Write-Output "Launch Beyond Compare..."
+            Write-Verbose "Launch Beyond Compare..."
             bcomp . ./latest/res_mods/configs
         }
-        Write-Output "Done."
+        Write-Verbose "Done."
     }
     else {
-        Write-Output "Download failed."
+        Write-Verbose "Download failed."
+        return
+    }
+    return "OK"
+}
+
+function Finalize {
+    $prefix = "Does not exist:"
+
+    if (Test-Path ".\latest\res_mods\configs\xvm\py_macro") {
+        Remove-Item -Recurse -Force ".\xvm\py_macro"
+        Copy-Item -Recurse ".\latest\res_mods\configs\xvm\py_macro" ".\xvm\"
+        Write-Verbose "Processed 'py_macro'."
+    }
+    else {
+        Write-Verbose "$prefix .\latest\res_mods\configs\xvm\py_macro"
+    }
+    
+    if (Test-Path ".\latest\mods") {
+        Remove-Item -Recurse -Force ".\..\..\mods"
+        Copy-Item -Recurse ".\latest\mods" ".\..\.."
+        Write-Verbose "Processed 'mods'."
+    }
+    else {
+        Write-Verbose "$prefix $scriptDir\latest\mods"
+    }
+    
+    if (Test-Path ".\latest\res_mods\mods") {
+        Remove-Item -Recurse -Force ".\..\mods"
+        Copy-Item -Recurse ".\latest\res_mods\mods" ".\.."
+        Write-Verbose "Processed 'res_mods\mods'."
+    }
+    else {
+        Write-Verbose "$prefix $scriptDir\latest\res_mods\mods"
+    }
+}
+
+if ($sixthSense) {
+    Install6thSenseIcon
+}
+elseif ($finalize) {
+    Finalize
+}
+else {
+    $result = Main
+    if ($result) {
+        Finalize
+        Install6thSenseIcon
     }
 }
