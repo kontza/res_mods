@@ -88,7 +88,7 @@ function Main {
     }
     if (Test-Path $XVM_RELEASE) {
         Write-Verbose "Extracting..."
-        Expand-Archive "$XVM_RELEASE" -DestinationPath latest
+        Expand-Archive "$XVM_RELEASE" -Verbose:$false -DestinationPath latest
         Write-Verbose "Clearing old PYC-files..."
         Get-ChildItem -Path ".\..\.." -Filter *.pyc -Recurse | ForEach-Object ($_) { Remove-Item $_.FullName }
         if ($noBCompare) {
@@ -118,7 +118,7 @@ function Finalize {
     else {
         Write-Verbose "$prefix .\latest\res_mods\configs\xvm\py_macro"
     }
-    
+
     if (Test-Path ".\latest\mods") {
         Remove-Item -Recurse -Force ".\..\..\mods"
         Copy-Item -Recurse ".\latest\mods" ".\..\.."
@@ -127,7 +127,7 @@ function Finalize {
     else {
         Write-Verbose "$prefix $scriptDir\latest\mods"
     }
-    
+
     if (Test-Path ".\latest\res_mods\mods") {
         Remove-Item -Recurse -Force ".\..\mods"
         Copy-Item -Recurse ".\latest\res_mods\mods" ".\.."
