@@ -18,7 +18,7 @@
     "showBattleTypeSelectorText": true,
     // true - show "Referral Program" button.
     // true - показать кнопку "Реферальная программа".
-    "showReferralButton": false,
+    "showReferralButton": true,
     // true - show "General chat" button.
     // true - показать кнопку "Общий чат".
     "showGeneralChatButton": false,
