@@ -60,8 +60,8 @@ function Main {
     }
 
     if ($XVM_VERSION.StartsWith("DEV")) {
-        $XVM_RELEASE = "latest_xvm.zip"
-        $XVM_URL = "http://nightly.modxvm.com/download/default/$XVM_RELEASE"
+        $XVM_RELEASE = "xvm_latest.zip"
+        $XVM_URL = "https://nightly.modxvm.com/download/master/$XVM_RELEASE"
     }
     else {
         $XVM_RELEASE = "xvm-$XVM_VERSION.zip"
