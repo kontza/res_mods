@@ -30,8 +30,8 @@
     Author: Juha Ruotsalainen
 #>
 param (
-    [string]$XVM_VERSION = "",
-    [switch]$noBCompare,
+    [string]$XVM_VERSION = "8.2.1",
+    [switch]$noBCompare = $true,
     [switch]$sixthSense,
     [switch]$finalize
 )
@@ -151,3 +151,4 @@ else {
         Install6thSenseIcon
     }
 }
+Write-Verbose "All done, TTFN."
