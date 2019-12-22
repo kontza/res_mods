@@ -15,8 +15,8 @@
     Specify the version of XVM to download. Use 'dev' as the version
     to instruct the script to download the development version
     of the XVM.
-.PARAMETER noBCompare
-    Skip the Beyond Compare (tm) stage.
+.PARAMETER BCompare
+    Launch the Beyond Compare (tm) stage (default = false).
 .PARAMETER sixthsense¨
     Only install the sixth sense icon.
 .PARAMETER finalize
@@ -30,8 +30,8 @@
     Author: Juha Ruotsalainen
 #>
 param (
-    [string]$XVM_VERSION = "8.2.1",
-    [switch]$noBCompare = $true,
+    [string]$XVM_VERSION = "8.2.3",
+    [switch]$BCompare = $false,
     [switch]$sixthSense,
     [switch]$finalize
 )
@@ -91,12 +91,12 @@ function Main {
         Expand-Archive "$XVM_RELEASE" -Verbose:$false -DestinationPath latest
         Write-Verbose "Clearing old PYC-files..."
         Get-ChildItem -Path ".\..\.." -Filter *.pyc -Recurse | ForEach-Object ($_) { Remove-Item $_.FullName }
-        if ($noBCompare) {
-            Write-Verbose "Bypassing Beyond Compare."
-        }
-        else {
+        if ($BCompare) {
             Write-Verbose "Launch Beyond Compare..."
             bcomp . ./latest/res_mods/configs
+        }
+        else {
+            Write-Verbose "Bypassing Beyond Compare."
         }
         Write-Verbose "Done."
     }
