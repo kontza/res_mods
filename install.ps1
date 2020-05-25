@@ -23,14 +23,14 @@
     Only run the finalize step, i.e. replace the old XVM with the
     new downloaded one, and copy the sixth sense icon.
 .EXAMPLE
-    .\install.ps1 -x 8.0.0 -v -n
+    .\install.ps1 -x 8.0.0 -b
     Download the 8.0.0 version of the XVM, print out verbosely
-    what is being done, and skip the Beyond Compare (tm) step.
+    what is being done, and run the Beyond Compare (tm) step.
 .NOTES
     Author: Juha Ruotsalainen
 #>
 param (
-    [string]$XVM_VERSION = "dev",
+    [string]$XVM_VERSION = "8.5.3",
     [switch]$BCompare = $false,
     [switch]$sixthSense,
     [switch]$finalize
