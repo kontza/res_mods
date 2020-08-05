@@ -30,7 +30,7 @@
     Author: Juha Ruotsalainen
 #>
 param (
-    [string]$XVM_VERSION = "8.5.3",
+    [string]$XVM_VERSION = "8.6.0",
     [switch]$BCompare = $false,
     [switch]$sixthSense,
     [switch]$finalize
