@@ -30,7 +30,7 @@
     Author: Juha Ruotsalainen
 #>
 param (
-    [string]$XVM_VERSION = "dev",
+    [string]$XVM_VERSION = "8.7.0",
     [switch]$BCompare = $false,
     [switch]$sixthSense,
     [switch]$finalize
@@ -45,6 +45,8 @@ function Install6thSenseIcon {
 }
 
 function Main {
+    Write-Verbose "Running 'git pull'..."
+    git pull
     $XVM_VERSION = $XVM_VERSION.ToUpper()
     if ($XVM_VERSION) {
         Write-Verbose "Trying to work with XVM $XVM_VERSION..."
