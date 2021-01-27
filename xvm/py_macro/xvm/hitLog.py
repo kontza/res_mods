@@ -47,7 +47,8 @@ BATTLE_TYPE = {ARENA_GUI_TYPE.UNKNOWN: "unknown",
                ARENA_GUI_TYPE.EPIC_RANDOM_TRAINING: "epic_random_training",
                ARENA_GUI_TYPE.EPIC_BATTLE: "epic_battle",
                ARENA_GUI_TYPE.EPIC_TRAINING: "epic_battle",
-               ARENA_GUI_TYPE.BATTLE_ROYALE: "battle_royale"}
+               ARENA_GUI_TYPE.BATTLE_ROYALE: "battle_royale",
+               ARENA_GUI_TYPE.BOB: "bob"}
 
 HIT_LOG = 'hitLog/'
 FORMAT_HISTORY = 'formatHistory'
@@ -901,7 +902,7 @@ def _Vehicle_startVisual(self):
 
 
 @registerEvent(Vehicle, 'onHealthChanged')
-def _Vehicle_onHealthChanged(self, newHealth, attackerID, attackReasonID):
+def _Vehicle_onHealthChanged(self, newHealth, oldHealth, attackerID, attackReasonID):
     if _config.get(HIT_LOG_ENABLED, True) and battle.isBattleTypeSupported:
         if (g_dataHitLog.playerVehicleID == attackerID) and (self.id not in g_dataHitLog.vehDead or newHealth <= -5):
             attacked = g_dataHitLog.player.arena.vehicles.get(self.id)
@@ -943,8 +944,9 @@ def game_handleKeyEvent(event):
                         g_hitLogs.isDownAlt = False
                         as_event(ON_HIT_LOG)
             else:
-                g_hitLogs.isDownAlt = not g_hitLogs.isDownAlt
-                as_event(ON_HIT_LOG)
+                if isDown:
+                    g_hitLogs.isDownAlt = not g_hitLogs.isDownAlt
+                    as_event(ON_HIT_LOG)
 
 
 def hLog():
