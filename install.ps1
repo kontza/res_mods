@@ -17,7 +17,7 @@
     of the XVM.
 .PARAMETER BCompare
     Launch the Beyond Compare (tm) stage (default = false).
-.PARAMETER sixthsense¨
+.PARAMETER sixthsense
     Only install the sixth sense icon.
 .PARAMETER finalize
     Only run the finalize step, i.e. replace the old XVM with the
