@@ -38,7 +38,7 @@ if __name__ == "__main__":
         "-b", "--beyond-compare", help="Launch the Beyond Compare (tm) stage.", default=False, action="store_true"
     )
     parser.add_argument(
-        "-s", "--sixth-sense", help="Only install the sixth sense icon.", default=False, action="store_true"
+        "-s", "--sixth-sense", help="Install only the sixth sense icon.", default=False, action="store_true"
     )
     parser.add_argument(
         "-f",
