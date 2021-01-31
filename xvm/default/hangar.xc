@@ -36,7 +36,7 @@
     "showDailyQuestWidget": true,
     // true - show banner of various events in the hangar.
     // true - показывать баннер различных событий в ангаре.
-    "showEventBanner": false,
+    "showEventBanner": true,
     // "Combat Intelligence" - show/hide notifications in the main window and counters in the menu.
     // "Полевая почта" - показывать/прятать уведомления в главном окне и счетчики в меню.
     "combatIntelligence": {
