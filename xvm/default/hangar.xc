@@ -403,10 +403,10 @@
     // Показывать/прятать счетчики уведомлений в главном меню.
     "notificationCounter": {
       "storage": true,                       // Storage        / Склад
-      "store": true,                        // Store          / Магазин
-      "missions": true,                     // Missions       / Задачи
+      "store": true,                         // Store          / Магазин
+      "missions": true,                      // Missions       / Задачи
       "PersonalMissionOperationsPage": true, // Campaigns      / Кампании      
-      "profile": true,                      // Service Record / Достижения
+      "profile": true,                       // Service Record / Достижения
       "barracks": true,                      // Barracks       / Казарма
       "StrongholdView": true                 // Clan           / Клан
     },
