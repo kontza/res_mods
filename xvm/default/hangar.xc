@@ -30,7 +30,7 @@
     "showRankedBattleResults": true,
     // true - show info windows when receiving progressive decals.
     // true - показывать информационное окно при получении этапной декали.
-    "showProgressiveDecalsWindow": true,
+    "showProgressiveDecalsWindow": false,
     // true - show widget "Daily Quests" in the hangar.
     // true - показывать виджет "Ежедневные задачи" в ангаре.
     "showDailyQuestWidget": true,
@@ -45,7 +45,7 @@
       "showPopUpMessages": false,
       // false - disable display unread notifications counter in the menu.
       // false - отключить отображение счетчика непрочитанных уведомлений в меню.
-      "showUnreadCounter": true
+      "showUnreadCounter": false
     },
     // Parameters of the "Session statistics" button.
     // Параметры кнопки "Сессионная статистика".
@@ -405,7 +405,7 @@
       "storage": true,                       // Storage        / Склад
       "store": true,                         // Store          / Магазин
       "missions": true,                      // Missions       / Задачи
-      "PersonalMissionOperationsPage": true, // Campaigns      / Кампании      
+      "PersonalMissionOperationsPage": true, // Campaigns      / Кампании
       "profile": true,                       // Service Record / Достижения
       "barracks": true,                      // Barracks       / Казарма
       "StrongholdView": true                 // Clan           / Клан
