@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import configparser
 import glob
 import logging
 import pkg_resources
@@ -8,13 +9,28 @@ logging.basicConfig(level=logging.INFO, format=">>> {message}", style="{")
 logger = logging.getLogger("xvm-updater")
 
 
-def scrape_current_version():
+def extract_game_version():
     versions = []
     for version_string in glob.glob("../1.*"):
         versions.append(pkg_resources.parse_version(version_string[3:]))
     versions.sort()
-    local_version = versions[-1]
-    logger.info(f"Local game version: {local_version}")
+    return versions[-1]
+
+
+def scrape_current_version():
+    config = configparser.ConfigParser()
+    parsed_xvm_version = None
+    with open("../mods/xfw_packages/xvm_main/python/__version__.py") as xvm_version_file:
+        payload = "[default]\n" + "\n".join(xvm_version_file.readlines())
+        config.read_string(payload.replace("'", ""))
+        version = config.get("default", "__xvm_version__")
+        revision = config.get("default", "__revision__")
+        dev = ""
+        if config.getboolean("default", "__development__"):
+            dev = "dev"
+        parsed_xvm_version = pkg_resources.parse_version(f"{version}{dev}{revision}")
+    return parsed_xvm_version
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -51,3 +67,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.xvm == "scrape":
         args.xvm = scrape_current_version()
+    args.game = extract_game_version()
+    logger.info("XVM version / Local game version")
+    logger.info(f"{args.xvm}/{args.game}")
